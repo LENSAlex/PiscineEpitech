@@ -48,5 +48,6 @@ defmodule Tp1Web.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
+  plug CORSPlug, origin: "*"
   plug Tp1Web.Router
 end
