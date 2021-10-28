@@ -1,20 +1,27 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <Users/>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <router-link class="navbar-brand" to="/Users">Users</router-link>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <router-link class="nav-link" to="/Clocks">ClocksManager</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/WorkingTimes">WorkingTimes</router-link>
+          </li>
+           <li class="nav-item">
+            <router-link class="nav-link" to="/WorkingTime">WorkingTime</router-link>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <router-view/>
   </div>
 </template>
-
-<script>
-import Users from './components/Users.vue'
-
-export default {
-  name: 'App',
-  components: {
-    Users
-  }
-}
-</script>
 
 <style>
 #app {
@@ -23,6 +30,18 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+#nav {
+  padding: 30px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>

@@ -2,6 +2,7 @@
   <div class="container">
     <button v-on:click="getUser()">Discover User</button> 
 
+    <h2 style="text-align: center">Liste des Users</h2> 
     <table class="table">
       <thead>
         <tr>
@@ -15,15 +16,15 @@
       <tbody>
         <tr v-for="user in users" :key="user.email">
             <th>{{ user.id }}</th>
-            <th>{{ user.email }}</th>
             <th>{{ user.username }}</th>
+            <th>{{ user.email }}</th>
             <th><button type="button" class="btn btn-danger" v-on:click="DeleteUser(user.id)">Delete</button></th>
             <th><button v-on:click="updateUserDisplay(user.id)" :data-id=user.id class="btn btn-warning">Update a user</button></th>
         </tr>
       </tbody>
     </table>
 
-    <form id="DisplayPutUser" @submit.prevent="UpdateUser(user.id)" method="post" v-bind:data-id={idUserPut} class="FormulairePutUser" v-show="false">
+    <form id="DisplayPutUser" @submit.prevent="UpdateUser(idUserPut)" method="post" v-bind:data-id="idUserPut" class="FormulairePutUser border border-primary" v-show="FormulaireStats" style="margin : 10px">
       <p>
         <label for="name">Username</label>
         <input id="name" v-model="name" type="text" name="name">
@@ -60,13 +61,14 @@
 
 
 import axios from 'axios';
-
 export default {
   name: 'Users',
   props: {
   },
+  mounted:function(){
+    axios.get(`http://localhost:4000/api/users`).then(response => (this.users = response.data.data))
+  },
   methods : {
-
     SubmitUser()
     {
       this.createUser(this.name , this.email)
@@ -74,13 +76,13 @@ export default {
 
     updateUserDisplay(id)
     {
-      alert(id)
       this.idUserPut = id;
+      this.FormulaireStats = true;
     },
 
     UpdateUser(id)
     {
-      this.updateUser(this.name , this.email , id)
+      this.updateUser(id , this.name , this.email)
     },
 
     DeleteUser(id)
@@ -119,12 +121,14 @@ export default {
           "email": email
         }
       }).then(response => (this.users = response))
+      this.FormulaireStats = false;
     }
   },
   data () {
     return {
       users: '',
       idUserPut : 52,
+      FormulaireStats : false
     }
   }
 }
