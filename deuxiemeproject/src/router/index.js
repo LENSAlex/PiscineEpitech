@@ -6,6 +6,10 @@ import WorkingTimes from '../components/WorkingTimes.vue'
 import WorkingTime from '../components/WorkingTime.vue'
 import Clocks from '../components/ClockManager.vue'
 
+import Raphael from 'raphael/raphael'
+global.Raphael = Raphael
+// import { DonutChart } from 'vue-morris'
+
 
 Vue.use(VueRouter)
 

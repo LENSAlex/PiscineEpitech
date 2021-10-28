@@ -103,7 +103,7 @@ export default {
     },
 
     deleteUser (userId) {
-      axios.delete(`http://localhost:4000/api/users/${userId}`).then(response => (this.users = response))
+      axios.delete(`http://localhost:4000/api/users/${userId}`).then(this.users = this.getUser())
       .catch(error => {
         console.log(error.response)
       });
@@ -120,7 +120,7 @@ export default {
           "username" : username ,
           "email": email
         }
-      }).then(response => (this.users = response))
+      }).then(this.users = this.getUser())
       this.FormulaireStats = false;
     }
   },
