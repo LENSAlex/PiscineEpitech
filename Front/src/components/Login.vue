@@ -14,10 +14,11 @@
               name="email"
               placeholder="Email"
             />
-            <button class="button" @click="navigateToWelcomePage">Login</button>
+            <button class="button" @click="getUser()">Login</button>
             <p class="text-muted">
               If you do not currently have an account, please register
             </p>
+            <p class="error-msg" v-if="error">{{ error }}</p>
             <button class="button" @click="navigateToRegisterPage">
               Register
             </button>
@@ -60,9 +61,8 @@ export default {
           },
         })
         .then((response) => {
-          alert("User create");
           this.$router.push({
-            path: "User/",
+            path: "/Welcome",
             props: { idUser: response.data.data.id },
           });
         })
@@ -71,19 +71,22 @@ export default {
         });
     },
 
-    getUser(email, username) {
+    getUser() {
       axios
         .get(
           "http://localhost:4000/api/users?email=" +
-            email +
+            this.email +
             "&username=" +
-            username
+            this.name
         )
         .then((response) => {
           this.$router.push({
             path: "/User",
             props: { idUser: response.data.data.id },
           });
+        })
+        .catch(() => {
+          this.error = "Invalid credentials";
         });
     },
   },
@@ -92,6 +95,9 @@ export default {
       users: "",
       idUserPut: 52,
       FormulaireStats: false,
+      error: "",
+      email: "",
+      name: "",
     };
   },
 };
@@ -130,6 +136,10 @@ body {
   margin-bottom: 20px;
   border: none;
   background-color: wheat !important;
+}
+
+.error-msg {
+  color: red;
 }
 
 .box {
