@@ -10,7 +10,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import router from './router'
 
 // import Users from './components/Users.vue'
-
+// import ClockManager from './components/ClockManager.vue'
 
 Vue.config.productionTip = false
 Vue.use(VueAxios, axios)
@@ -23,18 +23,9 @@ Vue.use(IconsPlugin)
 
 new Vue({
   router,
-
   // router
   render: h => h(App)
 }).$mount('#app')
 
-
-// const router = new VueRouter({
-//   mode: 'history',
-//   base: __dirname,
-//   routes: [
-//     { path: '/Users', component: Users },
-//   ]
-// });
 
 

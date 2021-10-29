@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <button v-on:click="getUser()">Discover User</button> 
+    <p>{{username}}</p>
+    <button v-on:click="getUserUnique(username)">Discover User</button> 
 
     <h2 style="text-align: center">Liste des Users</h2> 
     <table class="table">
@@ -63,7 +64,9 @@
 import axios from 'axios';
 export default {
   name: 'Users',
-  props: {
+  props:
+  {
+    username : String
   },
   mounted:function(){
     axios.get(`http://localhost:4000/api/users`).then(response => (this.users = response.data.data))
@@ -107,6 +110,11 @@ export default {
       .catch(error => {
         console.log(error.response)
       });
+    },
+
+    getUserUnique (id) {
+      axios.get('http://localhost:4000/api/users/'+id).then(response => (this.users = response.data))
+      console.log(this.users)
     },
 
     getUser () {

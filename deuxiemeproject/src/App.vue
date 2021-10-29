@@ -8,7 +8,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <router-link class="nav-link" to="/Clocks">ClocksManager</router-link>
+            <router-link class="nav-link" to="/Clocks/alex">ClocksManager</router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link" to="/WorkingTimes">WorkingTimes</router-link>
@@ -16,10 +16,24 @@
            <li class="nav-item">
             <router-link class="nav-link" to="/WorkingTime">WorkingTime</router-link>
           </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/ChartManager">ChartManager</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/Authentification">Authentification</router-link>
+          </li>
         </ul>
       </div>
     </nav>
     <router-view/>
+
+    <!-- <donut-chart 
+        id="donut" 
+        :data="donutData" 
+        colors='[ "#FF6384", "#36A2EB", "#FFCE56" ]' 
+        resize="true">
+    </donut-chart> -->
+
   </div>
 </template>
 
