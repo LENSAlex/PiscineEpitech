@@ -80,9 +80,10 @@ export default {
             this.name
         )
         .then((response) => {
+          localStorage.setItem("userTime", response.data.data[0].id);
+
           this.$router.push({
             path: "/User",
-            props: { idUser: response.data.data.id },
           });
         })
         .catch(() => {
