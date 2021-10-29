@@ -1,6 +1,6 @@
 {application,jason,
              [{applications,[kernel,stdlib,elixir]},
-              {description,"A blazing fast JSON parser and generator in pure Elixir.\n"},
+              {description,"A blazing fast JSON parser and generator in pure Elixir.\r\n"},
               {modules,['Elixir.Jason','Elixir.Jason.Codegen',
                         'Elixir.Jason.DecodeError','Elixir.Jason.Decoder',
                         'Elixir.Jason.Decoder.Unescape','Elixir.Jason.Encode',

@@ -26,9 +26,7 @@
               name="email"
               placeholder="Email"
             />
-            <button class="button" @click="navigateToWelcomePage">
-              Register
-            </button>
+            <button class="button" @click="SubmitUser">Register</button>
           </form>
         </div>
       </div>
@@ -65,9 +63,8 @@ export default {
           },
         })
         .then((response) => {
-          alert("User create");
           this.$router.push({
-            path: "User/",
+            path: "/User",
             props: { idUser: response.data.data.id },
           });
         })
@@ -89,6 +86,9 @@ export default {
             path: "/User",
             props: { idUser: response.data.data.id },
           });
+        })
+        .catch(() => {
+          this.error = "User already exists";
         });
     },
   },
@@ -97,6 +97,7 @@ export default {
       users: "",
       idUserPut: 52,
       FormulaireStats: false,
+      error: "",
     };
   },
 };
