@@ -8,8 +8,7 @@ import Clocks from '../components/ClockManager.vue'
 import ChartManager from '../components/ChartManager.vue'
 import Authentification from '../components/Authentification.vue'
 import User from '../components/User.vue'
-
-
+import Graph from '../components/Graph.vue'
 
 import Raphael from 'raphael/raphael'
 global.Raphael = Raphael
@@ -62,6 +61,11 @@ const routes = [
     component: User,
     props : true
   },
+  {
+    path: '/Graph',
+    name: 'Graph',
+    component: Graph
+  }
 ]
 
 const router = new VueRouter({

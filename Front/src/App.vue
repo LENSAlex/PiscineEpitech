@@ -22,6 +22,9 @@
           <li class="nav-item">
             <router-link class="nav-link" to="/Authentification">Authentification</router-link>
           </li>
+           <li class="nav-item">
+            <router-link class="nav-link" to="/Graph">graph</router-link>
+          </li>
         </ul>
       </div>
     </nav>
