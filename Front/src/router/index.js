@@ -1,19 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
-<<<<<<< HEAD
-import Users from '../components/Users.vue'
-import WorkingTimes from '../components/WorkingTimes.vue'
-import WorkingTime from '../components/WorkingTime.vue'
-import Clocks from '../components/ClockManager.vue'
-import ChartManager from '../components/ChartManager.vue'
-import Authentification from '../components/Authentification.vue'
-import User from '../components/User.vue'
-import Graph from '../components/Graph.vue'
 
-import Raphael from 'raphael/raphael'
-global.Raphael = Raphael
-=======
 import Users from "../components/Users.vue";
 import WorkingTimes from "../components/WorkingTimes.vue";
 import WorkingTime from "../components/WorkingTime.vue";
@@ -23,12 +11,11 @@ import Authentification from "../components/Authentification.vue";
 import Login from "../components/Login.vue";
 import Register from "../components/Register.vue";
 import Welcome from "../components/WelcomePage.vue";
-
+import Graph from "../components/Graph.vue"
 import User from "../components/User.vue";
 
 import Raphael from "raphael/raphael";
 global.Raphael = Raphael;
->>>>>>> New-Login-Branch
 // import { DonutChart } from 'vue-morris'
 
 Vue.use(VueRouter);
@@ -92,16 +79,13 @@ const routes = [
     component: User,
     props: true,
   },
-<<<<<<< HEAD
   {
     path: '/Graph',
     name: 'Graph',
     component: Graph
   }
 ]
-=======
-];
->>>>>>> New-Login-Branch
+
 
 const router = new VueRouter({
   mode: "history",
