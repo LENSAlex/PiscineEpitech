@@ -14,7 +14,7 @@
               name="email"
               placeholder="Email"
             />
-            <button class="button" @click="getUser()">Login</button>
+            <button class="button" @click="navigateToRegisterPage()">Login</button>
             <p class="text-muted">
               If you do not currently have an account, please register
             </p>
@@ -43,10 +43,7 @@ export default {
   },
   methods: {
     navigateToRegisterPage: function () {
-      this.$router.push({ name: "Register" });
-    },
-    navigateToWelcomePage: function () {
-      this.$router.push({ name: "Welcome" });
+      this.getUser(this.email , this.name);
     },
     SubmitUser() {
       this.createUser(this.name, this.email);
@@ -71,17 +68,13 @@ export default {
         });
     },
 
-    getUser() {
+    getUser(email , name) {
       axios
         .get(
-          "http://localhost:4000/api/users?email=" +
-            this.email +
-            "&username=" +
-            this.name
+          "http://localhost:4000/api/users?email="+email+"&username="+name
         )
         .then((response) => {
           localStorage.setItem("userTime", response.data.data[0].id);
-
           this.$router.push({
             path: "/User",
           });

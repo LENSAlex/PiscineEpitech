@@ -7,7 +7,7 @@ import WorkingTimes from "../components/WorkingTimes.vue";
 import WorkingTime from "../components/WorkingTime.vue";
 import Clocks from "../components/ClockManager.vue";
 import ChartManager from "../components/ChartManager.vue";
-import Authentification from "../components/Authentification.vue";
+import Authentification from "../components/Login.vue";
 import Login from "../components/Login.vue";
 import Register from "../components/Register.vue";
 import Welcome from "../components/WelcomePage.vue";

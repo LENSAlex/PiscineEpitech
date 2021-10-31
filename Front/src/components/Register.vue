@@ -63,9 +63,9 @@ export default {
           },
         })
         .then((response) => {
+          localStorage.setItem("userTime", response.data.data.id);
           this.$router.push({
-            path: "/User",
-            props: { idUser: response.data.data.id },
+            path: "/Welcome",
           });
         })
         .catch((error) => {
@@ -82,9 +82,10 @@ export default {
             username
         )
         .then((response) => {
+          alert("test");
+          localStorage.setItem("userTime", response.data.data.id);
           this.$router.push({
             path: "/User",
-            props: { idUser: response.data.data.id },
           });
         })
         .catch(() => {
