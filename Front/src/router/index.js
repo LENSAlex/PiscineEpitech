@@ -53,17 +53,17 @@ const routes = [
     component: Clocks,
   },
   {
-    path: "/WorkingTimes/:IdUser",
+    path: "/WorkingTimes/",
     name: "WorkingTimes",
     component: WorkingTimes,
   },
   {
-    path: "/WorkingTime/:IdUser",
+    path: "/WorkingTime/",
     name: "WorkingTime",
     component: WorkingTime,
   },
   {
-    path: "/ChartManager/:IdUser",
+    path: "/ChartManager/",
     name: "ChartManager",
     component: ChartManager,
   },
