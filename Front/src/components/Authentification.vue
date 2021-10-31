@@ -58,6 +58,7 @@ export default {
           }
       }).then(response => {
         alert("User create");
+        $(".NavBarApp").style()
         this.$router.push({path : 'User/' , props : {idUser:response.data.data.id}});
       })
       .catch(error => {
@@ -84,7 +85,14 @@ export default {
 
 
 <style>
-    body {
+
+.NavBarApp
+{
+  display: none;
+}
+
+
+body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
