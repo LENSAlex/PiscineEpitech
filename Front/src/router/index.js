@@ -1,7 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
-
 import Users from "../components/Users.vue";
 import WorkingTimes from "../components/WorkingTimes.vue";
 import WorkingTime from "../components/WorkingTime.vue";

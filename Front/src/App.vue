@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light NavBarApp" v:hide="">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light NavBarApp" v-show=FlagNav >
       <router-link class="navbar-brand" to="/Users">Users</router-link>
       <button
         class="navbar-toggler"
@@ -43,6 +43,9 @@
            <li class="nav-item">
             <router-link class="nav-link" to="/Graph">graph</router-link>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" v-on:click="Deconnexion()">Deconnexion</a>
+          </li>
         </ul>
       </div>
     </nav>
@@ -60,10 +63,34 @@
 <script>
 export default {
   name: "App",
+  mounted: function () {
+    this.FlagNav = localStorage.getItem("FlagNav");
+    if(this.FlagNav !== "true")
+    {
+      this.FlagNav = false;
+    }
+  },
+  data() {
+    return {
+      FlagNav: false,
+    };
+  },
+  methods : {
+    Deconnexion()
+    {
+      localStorage.setItem("userTime", null);
+      localStorage.setItem("FlagNav", null);
+      this.$router.push({
+        path: "/Login",
+      });
+    }
+  },
 };
+
 </script>
 
 <style>
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

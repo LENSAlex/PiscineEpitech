@@ -9,13 +9,13 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import router from './router'
 
+
 // import Users from './components/Users.vue'
 // import ClockManager from './components/ClockManager.vue'
 
 Vue.config.productionTip = false
 Vue.use(VueAxios, axios)
 // Vue.use(VueRouter)
-
 // Make BootstrapVue available throughout your project
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin

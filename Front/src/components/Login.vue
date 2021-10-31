@@ -75,6 +75,7 @@ export default {
         )
         .then((response) => {
           localStorage.setItem("userTime", response.data.data[0].id);
+          localStorage.setItem("FlagNav", true);
           this.$router.push({
             path: "/User",
           });
@@ -92,6 +93,7 @@ export default {
       error: "",
       email: "",
       name: "",
+      FlagNav : true
     };
   },
 };
