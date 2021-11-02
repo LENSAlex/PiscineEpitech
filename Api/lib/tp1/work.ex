@@ -36,8 +36,7 @@ defmodule Tp1.Work do
 
   """
   def get_working_times!(id), do: Repo.get!(WorkingTimes, id)
-  def get_working_times2!(userId, id), do: Repo.get_by(WorkingTimes, [ user: userId, id: id])
-
+  def get_working_times2!(userId, id), do: Repo.get_by(WorkingTimes, user: userId, id: id)
 
   @spec create_working_times(
           :invalid
@@ -59,6 +58,15 @@ defmodule Tp1.Work do
     %WorkingTimes{}
     |> WorkingTimes.changeset(attrs)
     |> Repo.insert()
+  end
+
+  def find(userId, start, end_param) do
+    Repo.all(
+      from w in WorkingTimes,
+        where:
+          w.user == type(^userId, :binary_id) and w.start > type(^start, :utc_datetime) and
+            w.end < type(^end_param, :utc_datetime)
+    )
   end
 
   @doc """

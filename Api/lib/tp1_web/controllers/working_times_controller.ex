@@ -20,12 +20,12 @@ defmodule Tp1Web.WorkingTimesController do
     end
   end
 
-  def show(conn, %{"id" => id}) do
-    working_times = Work.get_working_times!(id)
-    render(conn, "show.json", working_times: working_times)
+  def show(conn, %{"start" => start, "end" => end_param, "id" => userId}) do
+    working_times = Work.find(userId, start, end_param)
+    render(conn, "index.json", working_times: working_times)
   end
 
-  def show2(conn, %{"userId" => user, "id" => id}) do
+  def show(conn, %{"userId" => user, "id" => id}) do
     working_times = Work.get_working_times2!(user, id)
     render(conn, "show.json", working_times: working_times)
   end
@@ -33,7 +33,8 @@ defmodule Tp1Web.WorkingTimesController do
   def update(conn, %{"id" => id, "working_times" => working_times_params}) do
     working_times = Work.get_working_times!(id)
 
-    with {:ok, %WorkingTimes{} = working_times} <- Work.update_working_times(working_times, working_times_params) do
+    with {:ok, %WorkingTimes{} = working_times} <-
+           Work.update_working_times(working_times, working_times_params) do
       render(conn, "show.json", working_times: working_times)
     end
   end

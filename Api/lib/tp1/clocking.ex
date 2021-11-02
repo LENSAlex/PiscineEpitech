@@ -36,6 +36,8 @@ defmodule Tp1.Clocking do
 
   """
   def get_clock!(id), do: Repo.get!(Clock, id)
+  def get_clock2(id), do: Repo.all(from c in Clock, where: c.user == ^id)
+
 
   @doc """
   Creates a clock.

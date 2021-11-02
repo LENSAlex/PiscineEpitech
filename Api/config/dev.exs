@@ -4,7 +4,7 @@ use Mix.Config
 config :tp1, Tp1.Repo,
   username: "postgres",
   password: "root",
-  database: "tp1_dev",
+  database: "tp_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10

@@ -11,18 +11,20 @@ defmodule Tp1Web.ClockController do
     render(conn, "index.json", clocks: clocks)
   end
 
-  def create(conn, %{"clock" => clock_params}) do
-    with {:ok, %Clock{} = clock} <- Clocking.create_clock(clock_params) do
+  def create(conn, %{"clock" => clock_params, "id" => id}) do
+    tmp = %{"user" => id}
+    tmp = Map.merge(clock_params, tmp)
+    with {:ok, %Clock{} = clock} <- Clocking.create_clock(tmp) do
+      tmp2 = Clocking.get_clock!(clock.id)
       conn
       |> put_status(:created)
-      |> put_resp_header("location", Routes.clock_path(conn, :show, clock))
-      |> render("show.json", clock: clock)
+      |> render("show.json", clock: tmp2)
     end
   end
 
   def show(conn, %{"id" => id}) do
-    clock = Clocking.get_clock!(id)
-    render(conn, "show.json", clock: clock)
+    clock = Clocking.get_clock2(id)
+    render(conn, "index.json", clocks: clock)
   end
 
   def update(conn, %{"id" => id, "clock" => clock_params}) do
