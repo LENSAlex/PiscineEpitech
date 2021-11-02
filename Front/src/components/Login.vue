@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     navigateToRegisterPage: function () {
-      this.$router.push({ name: "Register" });
+      this.getUser(this.email , this.name)
     },
     SubmitUser() {
       this.createUser(this.name, this.email);

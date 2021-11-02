@@ -23,21 +23,58 @@ export default {
   components: {
     BarChart,
   },
+  mounted: function () {
+    axios
+      axios.get("http://localhost:4000/api/workingtimes").then(response => {
+            console.log(response)
+            this.users=response.data.data  
+            
+            //Parcour tab et rangement dans tab
+            this.users.forEach(WorkingTimes => {
+              this.TabHeure.push(this.CalculHeureWorkDay(WorkingTimes.start ,WorkingTimes.end))
+            });
+
+            //Creation du data
+            this.StringBarData = "{week" + ":" + "Du ... au ...."+","; //Grace aux input
+            this.TabHeure.forEach(Heure =>
+            {
+                //Voir pour mettre le jour liee les deux foreach
+                this.StringBarData += "LaDAte" + ":" + Heure +","
+            })
+            this.StringBarData += "}"
+            alert(this.StringBarData)
+        })
+  },
   data () {
       return {
+      users : "",
+      TabHeure : [],
+      StringBarData : "",
       barData: [
-        {"week":"36 Week","first":7,"second":5,"tree":4,"four":7,"five":5},
-        {"week":"35 Week","first":7,"second":5,"tree":4,"four":7,"five":5},
-        {"week":"34 Week","first":7,"second":5,"tree":4,"four":7,"five":5}
+        // {"week":"36 Week","first":7,"second":5,"tree":4,"four":7,"five":5},
+        // {"week":"35 Week","first":7,"second":5,"tree":4,"four":7,"five":5},
+        // {"week":"34 Week","first":7,"second":5,"tree":4,"four":7,"five":5}
+        // {this.StringBarData}
+        this.StringBarDatav 
       ],
       }
   },
   methods:{
-      getWorkingTimes(userid){
+    getWorkingTimes(userid){
         axios.get("http://localhost:4000/api/workingtimes/"+userid).then(response => {
             this.users=response.data.data      
         })
     },
+    CalculHeureWorkDay(start , end)
+    {
+      //TODO : Pas gerer les minutes que les heures
+      const DateStart = new Date(start).getHours();
+      const DateEnd = new Date(end).getHours();
+      //Pause midi
+      const DiffTemp = (DateEnd - DateStart ) + 1;
+
+      return DiffTemp;
+    }
   }
 }
 </script>
