@@ -65,7 +65,7 @@ export default {
         .then((response) => {
           localStorage.setItem("userTime", response.data.data.id);
           this.$router.push({
-            path: "/Welcome",
+            path: "/User",
           });
         })
         .catch((error) => {
