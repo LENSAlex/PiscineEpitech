@@ -38,10 +38,6 @@ defmodule Tp1.Work do
   def get_working_times!(id), do: Repo.get!(WorkingTimes, id)
   def get_working_times2!(userId, id), do: Repo.get_by(WorkingTimes, user: userId, id: id)
 
-  @spec create_working_times(
-          :invalid
-          | %{optional(:__struct__) => none, optional(atom | binary) => any}
-        ) :: any
   @doc """
   Creates a working_times.
 

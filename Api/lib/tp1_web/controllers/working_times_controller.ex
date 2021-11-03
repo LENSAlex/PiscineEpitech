@@ -11,12 +11,16 @@ defmodule Tp1Web.WorkingTimesController do
     render(conn, "index.json", workingtime: workingtime)
   end
 
-  def create(conn, %{"working_times" => working_times_params}) do
-    with {:ok, %WorkingTimes{} = working_times} <- Work.create_working_times(working_times_params) do
+  def create(conn, %{"working_times" => working_times_params, "userId" => id}) do
+    tmp = %{"user" => id}
+    tmp = Map.merge(working_times_params, tmp)
+
+    with {:ok, %WorkingTimes{} = workingtime} <- Work.create_working_times(tmp) do
+      tmp2 = Work.get_working_times!(workingtime.id)
+
       conn
       |> put_status(:created)
-      |> put_resp_header("location", Routes.working_times_path(conn, :show, working_times))
-      |> render("show.json", working_times: working_times)
+      |> render("show.json", working_times: tmp2)
     end
   end
 
