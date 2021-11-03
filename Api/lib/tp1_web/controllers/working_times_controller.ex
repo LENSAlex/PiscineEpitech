@@ -24,9 +24,9 @@ defmodule Tp1Web.WorkingTimesController do
     end
   end
 
-  def show(conn, %{"start" => start, "end" => end_param, "id" => userId}) do
-    working_times = Work.find(userId, start, end_param)
-    render(conn, "index.json", working_times: working_times)
+  def show(conn, %{"id" => userId, "start" => start, "end" => end_param}) do
+    workingtime = Work.find(userId, start, end_param)
+    render(conn, "index.json", workingtime: workingtime)
   end
 
   def show(conn, %{"userId" => user, "id" => id}) do
